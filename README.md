@@ -1,6 +1,8 @@
-# Web Snake Game
+# Web Snake Game - VIBE CODING
 
 A classic Snake game implemented as a web application using Python Flask for the backend and standard web technologies (HTML, CSS, JavaScript) for the frontend.
+
+![image](https://github.com/user-attachments/assets/f4cec7d4-b16b-4612-b25d-a14b5d9bd592)
 
 ## Features
 
