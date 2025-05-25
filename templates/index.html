@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Snake Game</h1>
+
+        <div id="settingsArea" class="settings">
+            <label for="gridSize">Grid Size:</label>
+            <select id="gridSize">
+                {% for size in grid_sizes %}
+                    <option value="{{ size }}" {% if size == 20 %}selected{% endif %}>{{ size }}x{{ size }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                {% for diff in difficulties %}
+                    <option value="{{ diff }}" {% if diff == 'medium' %}selected{% endif %}>{{ diff | capitalize }}</option>
+                {% endfor %}
+            </select>
+
+            <button id="startButton">Start Game</button>
+        </div>
+
+        <div id="gameArea" class="hidden"> {# This div will contain the game elements #}
+            <div id="score">Score: 0</div>
+            <canvas id="gameCanvas"></canvas>
+            <div id="countdown" class="hidden"></div> {# Element for countdown #}
+            <div id="gameControls"> {# New div for game controls #}
+                <button id="pauseButton">Pause</button>
+                <button id="inGameRestartButton">Restart</button> {# New Restart button for during game #}
+            </div>
+            <div id="gameOverMessage" class="hidden">
+                Game Over! Your score: <span id="finalScore"></span>
+                <button id="restartButton">Restart</button> {# This one is for Game Over screen #}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Pass cell_size from Flask to JavaScript
+        const CELL_SIZE = {{ cell_size }};
+        // GRID_SIZE and GAME_SPEED will be received from the backend game state
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

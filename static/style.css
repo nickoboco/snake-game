@@ -1,0 +1,172 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #222;
+    color: #eee;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px; /* Add some padding around the content */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.game-container {
+    text-align: center;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 95%; /* Limit maximum width */
+    max-height: 95vh; /* Limit maximum height based on viewport height */
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    overflow: auto; /* Add scroll if content exceeds max-height, though we aim to avoid it */
+}
+
+h1 {
+    color: #4CAF50; /* Green */
+    margin-top: 0;
+}
+
+.settings {
+    margin-bottom: 15px;
+    font-size: 1em;
+    flex-shrink: 0; /* Prevent settings from shrinking */
+}
+
+.settings label {
+    margin-right: 5px;
+    color: #bbb;
+}
+
+.settings select,
+.settings button {
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: #eee;
+    cursor: pointer;
+}
+
+.settings button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.settings button:hover {
+    background-color: #45a049;
+}
+
+#score {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    flex-shrink: 0; /* Prevent score from shrinking */
+}
+
+#gameCanvas {
+    border: 1px solid #555;
+    background-color: #111;
+    display: block; /* Remove extra space below canvas */
+    margin: 0 auto;
+    max-width: 100%; /* Ensure canvas doesn't exceed container width */
+    height: auto; /* Maintain aspect ratio */
+    flex-grow: 1; /* Allow canvas to grow */
+    /* The actual pixel dimensions are set by JavaScript,
+       but max-width/height here helps contain it visually */
+    position: relative; /* Needed for positioning countdown */
+    z-index: 1; /* Ensure canvas is below countdown */
+}
+
+#countdown {
+    position: absolute; /* Position over the canvas */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em; /* Large font size */
+    color: #eee; /* White text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for readability */
+    z-index: 10; /* Ensure it's above the canvas */
+    /* Added styles for background and appearance */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    padding: 20px 40px; /* Add padding */
+    border-radius: 10px; /* Rounded corners */
+    border: 2px solid #4CAF50; /* Green border */
+}
+
+#gameControls { /* New styles for game controls */
+    margin-top: 10px;
+    flex-shrink: 0;
+}
+
+#gameControls button {
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #555; /* Darker grey */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+#gameControls button:hover {
+    background-color: #666; /* Slightly lighter on hover */
+}
+
+#gameOverMessage {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #f44336; /* Red */
+    flex-shrink: 0; /* Prevent message from shrinking */
+    /* Added styles for centering and appearance */
+    position: absolute; /* Position over the canvas */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center; /* Center text and inline/inline-block children */
+    z-index: 10; /* Ensure it's above the canvas */
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+}
+
+#gameOverMessage span { /* Style for the score */
+    font-size: 1.8em; /* Make score larger */
+    font-weight: bold;
+    color: #4CAF50; /* Green color for score */
+    margin-top: 5px; /* Space between text and score */
+    display: block; /* Ensure span takes its own line */
+}
+
+
+#gameOverMessage button {
+    margin-top: 15px; /* Increased margin */
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    /* Button is already centered by parent flex container */
+}
+
+#gameOverMessage button:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none;
+}
